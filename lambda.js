@@ -7,8 +7,4 @@ exports.handler = function(event, context, callback) {
       }
       callback(null, {result: result});
     })
-  }
-  else {
-    callback(null, {error: 'whoopsiedaisy'});
-  }
 };

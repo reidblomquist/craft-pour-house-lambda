@@ -31,9 +31,9 @@ exports.scrape = function(callback) {
         parseResults.push(cleanStr);
       });
 
-      return callback(true, parseResults);
+      return callback(null, parseResults);
     })
     .catch(function (error) {
-      callback(null, error);
+      callback(true, error);
     });
 };
