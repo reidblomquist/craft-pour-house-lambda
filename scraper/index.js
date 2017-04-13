@@ -23,12 +23,16 @@ exports.scrape = function(callback) {
 
       $('.beer').each(function(i, element) {
         var str = '';
-        str += $(this).find('.beer-name').children('.item-title-color').text();
-        str += ' ' + $(this).find('.abv').text();
+        var tapNum = $(this).find('.tap-number-hideable').text().trim();
 
-        var cleanStr = str.replace(/\n           /g, '').replace(/\n          /g, '').replace(/\n        /g, '')
+        if (tapNum !== '') {
+          str += $(this).find('.beer-name').children('a.item-title-color').text();
+          str += ' ' + $(this).find('.abv').text();
 
-        parseResults.push(cleanStr);
+          var cleanStr = str.replace(/\n           /g, '').replace(/\n          /g, '').replace(/\n        /g, '')
+
+          parseResults.push(cleanStr);
+        }
       });
 
       return callback(null, parseResults);

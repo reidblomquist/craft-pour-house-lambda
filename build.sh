@@ -4,6 +4,9 @@ PACKAGE=craft-pour-house-lambda.zip
 OUTPUT=dist
 TMP=.tmp
 
+export PACKAGE
+export OUTPUT
+
 mkdir $TMP
 mkdir $OUTPUT
 rm $OUTPUT/$PACKAGE

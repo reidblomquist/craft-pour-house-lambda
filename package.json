@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "DEBUG=express:* nodemon --watch scraper devserver.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -12,5 +12,10 @@
   "dependencies": {
     "axios": "^0.16.1",
     "cheerio": "^0.22.0"
+  },
+  "devDependencies": {
+    "body-parser": "1.15.1 ",
+    "express": "4.13.4",
+    "nodemon": "^1.11.0"
   }
 }
