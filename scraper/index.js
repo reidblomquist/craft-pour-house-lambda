@@ -22,16 +22,18 @@ exports.scrape = function(callback) {
       var parseResults = [];
 
       $('.beer').each(function(i, element) {
-        var str = '';
+        var obj = {};
         var tapNum = $(this).find('.tap-number-hideable').text().trim();
 
         if (tapNum !== '') {
-          str += $(this).find('.beer-name').children('a.item-title-color').text();
-          str += ' ' + $(this).find('.abv').text();
+          obj.tap = tapNum.replace('.', '');
+          obj.brewery = $(this).find('.brewery').find('a').text();
+          obj.abv = $(this).find('.abv').text().replace('%', '').replace(' ABV', '');
+          obj.desc = $(this).find('.item-description').children('p').text().replace(/\n/g, '');
+          obj.name = $(this).find('.beer-name').children('a').text().replace(/\n/g, '').replace(tapNum, '').trim();
+          obj.type = $(this).find('.beer-style').text();
 
-          var cleanStr = str.replace(/\n           /g, '').replace(/\n          /g, '').replace(/\n        /g, '')
-
-          parseResults.push(cleanStr);
+          parseResults.push(obj);
         }
       });
 
